@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # American Made Utility Trailers
 
 Welcome to our online marketplace for high-quality, American-made utility trailers!
@@ -52,3 +53,6 @@ Stay connected with us:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+=======
+"# trailerjoes" 
+>>>>>>> 9cef491 (first commit)
