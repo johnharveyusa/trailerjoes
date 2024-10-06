@@ -1,9 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 87d5b13 (modified verbiage)
 # American Made Utility Trailers
 
 Welcome to our online marketplace for high-quality, American-made utility trailers!
 
+<<<<<<< HEAD
 ## About Us 
+=======
+## About Us
+>>>>>>> 87d5b13 (modified verbiage)
 
 [Company Name] specializes in manufacturing and selling durable, reliable utility trailers designed for both personal and commercial use. Our commitment to quality and customer satisfaction sets us apart from competitors.
 
@@ -53,6 +60,9 @@ Stay connected with us:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<<<<<<< HEAD
 =======
 "# trailerjoes" 
 >>>>>>> 9cef491 (first commit)
+=======
+>>>>>>> 87d5b13 (modified verbiage)
