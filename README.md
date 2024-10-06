@@ -2,7 +2,7 @@
 
 Welcome to our online marketplace for high-quality, American-made utility trailers!
 
-## About Us
+## About Us 
 
 [Company Name] specializes in manufacturing and selling durable, reliable utility trailers designed for both personal and commercial use. Our commitment to quality and customer satisfaction sets us apart from competitors.
 
