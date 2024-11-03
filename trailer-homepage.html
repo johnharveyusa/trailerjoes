@@ -1,933 +1,938 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trailer Joe's</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* All your existing styles from your original page */
-        .star {
-            position: absolute;
-            color: white;
-            opacity: 0.8;
-            font-size: 10px;
-            animation: twinkle 1.5s infinite;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 0.3; }
-        }
-        .flag-background {
-            position: relative;
-            background: url("/american-flag-image.jpg") no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-        .flag-background::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.92);
-            pointer-events: none;
-        }
-        .star-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-        }
-        .content-container {
-            position: relative;
-            z-index: 10;
-        }
-        .hero-overlay {
-            background: url("american-flag-image.jpg") center/cover no-repeat;
-            border-top: 4px solid white;
-            border-bottom: 4px solid white;
-            position: relative;
-        }
-        .hero-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .card-background {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #002868;
-        }
-        .btn-blue {
-            background-color: #002868;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-blue:hover {
-            background-color: #001845;
-        }
-        .btn-red {
-            background-color: #bb0000;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-red:hover {
-            background-color: #990000;
-        }
-        .accordion-header {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            cursor: pointer;
-            border: 2px solid #002868;
-            border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .accordion-header:hover {
-            background-color: #e9ecef;
-        }
-        .accordion-header::after {
-            content: '+';
-            font-size: 1.5rem;
-            margin-left: 1rem;
-        }
-        .accordion-header.active::after {
-            content: '-';
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            border-left: 2px solid #002868;
-            border-right: 2px solid #002868;
-            border-bottom: 2px solid #002868;
-            border-radius: 0 0 0.5rem 0.5rem;
-            margin-top: -0.5rem;
-            margin-bottom: 1rem;
-        }
-        .accordion-content.active {
-            max-height: 2000px;
-        }
-        .accordion-inner {
-            padding: 1rem;
-            background-color: white;
-        }
-        .trailer-card {
-            margin-bottom: 2rem;
-            background-color: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .specs-table th {
-            background-color: #002868;
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: bold;
-        }
-        .specs-table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        .specs-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .specs-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        #allSpecsContainer {
-            display: none;
-            margin-top: 2rem;
-            animation: fadeIn 0.5s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div class="flag-background">
-        <div class="star-container" id="stars"></div>
-        <div class="content-container mx-auto px-4 py-16">
-            <!-- Navigation -->
-            <nav class="bg-gray-800 text-white p-4 shadow-lg">
-                <div class="container mx-auto flex justify-between items-center">
-                    <div class="text-2xl font-bold">Trailer Joe's</div>
-                    <div class="space-x-6">
-                        <a href="#" class="hover:text-gray-300">Home</a>
-                        <a href="#inventory" class="hover:text-gray-300">Trailers</a>
-                        <a href="#about" class="hover:text-gray-300">About</a>
-                        <a href="#contact" class="hover:text-gray-300">Contact</a>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trailer Joe's</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+        <!-- Add this in your HTML head section -->
+        <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap" rel="stylesheet">
+        <style>
+            /* All your existing styles from your original page */
+            .star {
+                position: absolute;
+                color: white;
+                opacity: 0.8;
+                font-size: 10px;
+                animation: twinkle 1.5s infinite;
+            }
+            @keyframes twinkle {
+                0%, 100% { opacity: 0.8; }
+                50% { opacity: 0.3; }
+            }
+            .flag-background {
+                position: relative;
+                background: url("/american-flag-image.jpg") no-repeat center center;
+                background-size: cover;
+                background-attachment: fixed;
+                min-height: 100vh;
+            }
+            .flag-background::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.92);
+                pointer-events: none;
+            }
+            .star-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+            }
+            .content-container {
+                position: relative;
+                z-index: 10;
+            }
+            .hero-overlay {
+                background: url("american-flag-image.jpg") center/cover no-repeat;
+                border-top: 4px solid white;
+                border-bottom: 4px solid white;
+                position: relative;
+            }
+            .hero-overlay::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.3);
+            }
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+            .card-background {
+                background: rgba(255, 255, 255, 0.95);
+                border: 2px solid #002868;
+            }
+            .btn-blue {
+                background-color: #002868;
+                color: white;
+                transition: all 0.3s ease;
+            }
+            .btn-blue:hover {
+                background-color: #001845;
+            }
+            .btn-red {
+                background-color: #bb0000;
+                color: white;
+                transition: all 0.3s ease;
+            }
+            .btn-red:hover {
+                background-color: #990000;
+            }
+            .accordion-header {
+                background-color: #f8f9fa;
+                padding: 1rem;
+                cursor: pointer;
+                border: 2px solid #002868;
+                border-radius: 0.5rem;
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+            .accordion-header:hover {
+                background-color: #e9ecef;
+            }
+            .accordion-header::after {
+                content: '+';
+                font-size: 1.5rem;
+                margin-left: 1rem;
+            }
+            .accordion-header.active::after {
+                content: '-';
+            }
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                border-left: 2px solid #002868;
+                border-right: 2px solid #002868;
+                border-bottom: 2px solid #002868;
+                border-radius: 0 0 0.5rem 0.5rem;
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
+            }
+            .accordion-content.active {
+                max-height: 2000px;
+            }
+            .accordion-inner {
+                padding: 1rem;
+                background-color: white;
+            }
+            .trailer-card {
+                margin-bottom: 2rem;
+                background-color: white;
+                border-radius: 0.5rem;
+                overflow: hidden;
+            }
+            .specs-table {
+                width: 100%;
+                border-collapse: collapse;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .specs-table th {
+                background-color: #002868;
+                color: white;
+                padding: 12px;
+                text-align: left;
+                font-weight: bold;
+            }
+            .specs-table td {
+                padding: 12px;
+                border: 1px solid #ddd;
+            }
+            .specs-table tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .specs-table tr:hover {
+                background-color: #f5f5f5;
+            }
+            #allSpecsContainer {
+                display: none;
+                margin-top: 2rem;
+                animation: fadeIn 0.5s ease-in;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            h1, h2, .stencil-text {
+    font-family: 'Black Ops One', cursive;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flag-background">
+            <div class="star-container" id="stars"></div>
+            <div class="content-container mx-auto px-4 py-16">
+                <!-- Navigation -->
+                <nav class="bg-gray-800 text-white p-4 shadow-lg">
+                    <div class="container mx-auto flex justify-between items-center">
+                        <div class="text-2xl font-bold">Trailer Joe's</div>
+                        <div class="space-x-6">
+                            <a href="#" class="hover:text-gray-300">Home</a>
+                            <a href="#inventory" class="hover:text-gray-300">Trailers</a>
+                            <a href="#about" class="hover:text-gray-300">About</a>
+                            <a href="#contact" class="hover:text-gray-300">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Hero Section -->
+                <div class="hero-overlay py-32">
+                    <div class="container mx-auto px-4">
+                        <div class="max-w-4xl mx-auto text-center hero-content">
+                            <h1 class="text-5xl font-bold mb-4 text-white">Trailer Joe's</h1>
+                            <p class="text-xl mb-8 text-white">Built with pride in Tennessee!</p>
+                            <div class="space-x-4">
+                                <a href="#inventory" class="btn-red px-8 py-3 rounded-lg text-lg shadow-lg inline-block">View Our Inventory</a>
+                                <a href="#contact" class="btn-blue px-8 py-3 rounded-lg text-lg shadow-lg inline-block">Get a Quote</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav>
 
-            <!-- Hero Section -->
-            <div class="hero-overlay py-32">
-                <div class="container mx-auto px-4">
-                    <div class="max-w-4xl mx-auto text-center hero-content">
-                        <h1 class="text-5xl font-bold mb-4 text-white">Trailer Joe's</h1>
-                        <p class="text-xl mb-8 text-white">Built with pride in Tennessee!</p>
-                        <div class="space-x-4">
-                            <a href="#inventory" class="btn-red px-8 py-3 rounded-lg text-lg shadow-lg inline-block">View Our Inventory</a>
-                            <a href="#contact" class="btn-blue px-8 py-3 rounded-lg text-lg shadow-lg inline-block">Get a Quote</a>
+                <!-- Featured Products -->
+                <div class="container mx-auto py-16 px-4" id="inventory">
+                    <div class="card-background p-8 rounded-lg shadow-lg">
+                        <h2 class="text-3xl font-bold mb-12 text-center text-[#002868]">Featured Utility Trailers</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- 10' Trailers -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-[#002868]">10' Utility Trailer SA/TA</h2>
+                                <div class="flex items-center mb-4">
+                                    <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                    <h3 class="text-xl font-bold"></h3>
+                                </div>
+                                <div class="mb-4">
+                                    <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                    onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                    Click for Description ▼
+                                    </button>
+                                    <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                        <h1>6.4X10TA Utility Trailer</h1>
+                                        <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+
+                                        <h2>Trailer Details</h2>
+                                        <dl class="specs">
+                                            <dt>Color:</dt>
+                                            <dd>Black</dd>
+                                            <dt>Size:</dt>
+                                            <dd>6'4" X 10 Utility Trailer (Dovetail and Straight Bed Available)</dd>
+                                            <dt>Tires:</dt>
+                                            <dd>Radial 205/75R/15</dd>
+                                            <dt>Wheels:</dt>
+                                            <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
+                                            <dt>Ball / Plug Type:</dt>
+                                            <dd>2" / 4-straight</dd>
+                                            <dt>Vin#:</dt>
+                                            <dd>TBD</dd>
+                                        </dl>
+
+                                        <h2>Features</h2>
+                                        <dl class="specs">
+                                            <dt>Clearance Lights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Taillights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Undercoating:</dt>
+                                            <dd>Primer prior to paint</dd>
+                                        </dl>
+
+                                        <h2>Dimensions</h2>
+                                        <dl class="specs">
+                                            <dt>Overall Length:</dt>
+                                            <dd>13'8" (Includes tongue length)</dd>
+                                            <dt>Overall Width:</dt>
+                                            <dd>8' 0" (includes fenders width)</dd>
+                                            <dt>Overall Height:</dt>
+                                            <dd>2' 8"</dd>
+                                            <dt>Interior Length:</dt>
+                                            <dd>10' 0"</dd>
+                                            <dt>Interior Width:</dt>
+                                            <dd>6' 4"</dd>
+                                            <dt>Interior Height:</dt>
+                                            <dd>1' 2"</dd>
+                                            <dt>Rear Door Height:</dt>
+                                            <dd>33" or 48"</dd>
+                                            <dt>Rear Door Width:</dt>
+                                            <dd>6'4"</dd>
+                                            <dt>Hitch Height:</dt>
+                                            <dd>20"</dd>
+                                        </dl>
+
+                                        <h2>Axles and Brakes</h2>
+                                        <dl class="specs">
+                                            <dt>GVWR:</dt>
+                                            <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
+                                            <dt>Carrying Capacity:</dt>
+                                            <dd>6050 lbs.</dd>
+                                            <dt>Empty Weight:</dt>
+                                            <dd>950 lbs.</dd>
+                                            <dt>Suspension:</dt>
+                                            <dd>Spring Axle</dd>
+                                            <dt>Brakes:</dt>
+                                            <dd>No (unless ordered)</dd>
+                                        </dl>
+
+                                        <h2>Construction</h2>
+                                        <dl class="specs">
+                                            <dt>Frame:</dt>
+                                            <dd>Angle</dd>
+                                            <dt>Flooring:</dt>
+                                            <dd>Wood</dd>
+                                            <dt>Spare Tire Mount:</dt>
+                                            <dd>Included</dd>
+                                            <dt>Rear:</dt>
+                                            <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- 12' trailer -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-[#002868]">12' Utility Trailer SA/TA</h2>
+                                <div class="flex items-center mb-4">
+                                    <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                    <h3 class="text-xl font-bold"></h3>
+                                </div>
+                                <div class="mb-4">
+                                    <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                    onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                    Click for Description ▼
+                                    </button>
+                                    <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                        <h1>6.4X12TA Utility Trailer</h1>
+                                        <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+
+                                        <h2>Trailer Details</h2>
+                                        <dl class="specs">
+                                            <dt>Color:</dt>
+                                            <dd>Black</dd>
+                                            <dt>Size:</dt>
+                                            <dd>6'4" X 12 Utility Trailer (Dovetail and Straight Bed Available)</dd>
+                                            <dt>Tires:</dt>
+                                            <dd>Radial 205/75R/15</dd>
+                                            <dt>Wheels:</dt>
+                                            <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
+                                            <dt>Ball / Plug Type:</dt>
+                                            <dd>2" / 4-straight</dd>
+                                            <dt>Vin#:</dt>
+                                            <dd>TBD</dd>
+                                        </dl>
+
+                                        <h2>Features</h2>
+                                        <dl class="specs">
+                                            <dt>Clearance Lights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Taillights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Undercoating:</dt>
+                                            <dd>Primer prior to paint</dd>
+                                        </dl>
+
+                                        <h2>Dimensions</h2>
+                                        <dl class="specs">
+                                            <dt>Overall Length:</dt>
+                                            <dd>15' 8" (Includes tongue length)</dd>
+                                            <dt>Overall Width:</dt>
+                                            <dd>8' 0" (includes fenders width)</dd>
+                                            <dt>Overall Height:</dt>
+                                            <dd>2' 8"</dd>
+                                            <dt>Interior Length:</dt>
+                                            <dd>12' 0"</dd>
+                                            <dt>Interior Width:</dt>
+                                            <dd>6' 4"</dd>
+                                            <dt>Interior Height:</dt>
+                                            <dd>1' 2"</dd>
+                                            <dt>Rear Door Height:</dt>
+                                            <dd>33" or 48" (dovetail/straight bed)</dd>
+                                            <dt>Rear Door Width:</dt>
+                                            <dd>6'4"</dd>
+                                            <dt>Hitch Height:</dt>
+                                            <dd>20"</dd>
+                                        </dl>
+
+                                        <h2>Axles and Brakes</h2>
+                                        <dl class="specs">
+                                            <dt>GVWR:</dt>
+                                            <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
+                                            <dt>Empty Weight:</dt>
+                                            <dd>1050 lbs.</dd>
+                                            <dt>Carrying Capacity:</dt>
+                                            <dd>5950 lbs.</dd>
+                                            <dt>Suspension:</dt>
+                                            <dd>Spring Axle</dd>
+                                            <dt>Brakes:</dt>
+                                            <dd>No (unless ordered)</dd>
+                                        </dl>
+
+                                        <h2>Construction</h2>
+                                        <dl class="specs">
+                                            <dt>Frame:</dt>
+                                            <dd>Angle</dd>
+                                            <dt>Flooring:</dt>
+                                            <dd>Wood</dd>
+                                            <dt>Spare Tire Mount:</dt>
+                                            <dd>Included</dd>
+                                            <dt>Rear:</dt>
+                                            <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 14' trailer -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-[#002868]">14' Utility Trailer SA/TA</h2>
+                                <div class="flex items-center mb-4">
+                                    <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                    <h3 class="text-xl font-bold"></h3>
+                                </div>
+                                <div class="mb-4">
+                                    <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                    onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                    Click for Description ▼
+                                    </button>
+                                    <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                        <h1>6.4X14TA Utility Trailer</h1>
+                                        <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+
+                                        <h2>Trailer Details</h2>
+                                        <dl class="specs">
+                                            <dt>Color:</dt>
+                                            <dd>Black</dd>
+                                            <dt>Size:</dt>
+                                            <dd>6'4" X 14 Utility Trailer. Dovetail and Straight Bed Available</dd>
+                                            <dt>Tires:</dt>
+                                            <dd>Radial 205/75R/15</dd>
+                                            <dt>Wheels:</dt>
+                                            <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
+                                            <dt>Ball / Plug Type:</dt>
+                                            <dd>2" / 4-straight or 7 pin</dd>
+                                            <dt>Vin#:</dt>
+                                            <dd>TBD</dd>
+                                        </dl>
+
+                                        <h2>Features</h2>
+                                        <dl class="specs">
+                                            <dt>Clearance Lights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Taillights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Undercoating:</dt>
+                                            <dd>Primer prior to paint</dd>
+                                        </dl>
+
+                                        <h2>Dimensions</h2>
+                                        <dl class="specs">
+                                            <dt>Overall Length:</dt>
+                                            <dd>17'8" (Includes tongue length)</dd>
+                                            <dt>Overall Width:</dt>
+                                            <dd>8' 0" (includes fenders width)</dd>
+                                            <dt>Overall Height:</dt>
+                                            <dd>2' 8"</dd>
+                                            <dt>Interior Length:</dt>
+                                            <dd>14' 0"</dd>
+                                            <dt>Interior Width:</dt>
+                                            <dd>6' 4"</dd>
+                                            <dt>Interior Height:</dt>
+                                            <dd>1' 2"</dd>
+                                            <dt>Rear Door Height:</dt>
+                                            <dd>33" or 48" (dovetail/straight bed)</dd>
+                                            <dt>Rear Door Width:</dt>
+                                            <dd>6'4"</dd>
+                                            <dt>Hitch Height:</dt>
+                                            <dd>20"</dd>
+                                        </dl>
+
+                                        <h2>Axles and Brakes</h2>
+                                        <dl class="specs">
+                                            <dt>GVWR:</dt>
+                                            <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
+                                            <dt>Empty Weight:</dt>
+                                            <dd>1050 lbs.</dd>
+                                            <dt>Suspension:</dt>
+                                            <dd>Spring Axle</dd>
+                                            <dt>Brakes:</dt>
+                                            <dd>Electric brakes on 1 axle</dd>
+                                        </dl>
+
+                                        <h2>Construction</h2>
+                                        <dl class="specs">
+                                            <dt>Frame:</dt>
+                                            <dd>Angle</dd>
+                                            <dt>Flooring:</dt>
+                                            <dd>Wood</dd>
+                                            <dt>Spare Tire Mount:</dt>
+                                            <dd>Included</dd>
+                                            <dt>Rear:</dt>
+                                            <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        <!-- 16' Trailers -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-[#002868]">16' Utility Trailer TA</h2>
+                                <div class="flex items-center mb-4">
+                                    <img src="16TA.webp" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                    <h3 class="text-xl font-bold"></h3>
+                                </div>
+                                <div class="mb-4">
+                                    <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                    onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                    Click for Description ▼
+                                    </button>
+                                    <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                        <h1>6.4X16TA Utility Trailer</h1>
+                                        <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+
+                                        <h2>Trailer Details</h2>
+                                        <dl class="specs">
+                                            <dt>Color:</dt>
+                                            <dd>Black</dd>
+                                            <dt>Size:</dt>
+                                            <dd>6'4" X 16' Utility Trailer (Dovetail and Straight Bed Available)</dd>
+                                            <dt>Tires:</dt>
+                                            <dd>Radial 205/75R/15</dd>
+                                            <dt>Wheels:</dt>
+                                            <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
+                                            <dt>Ball / Plug Type:</dt>
+                                            <dd>2" / 7 round pin</dd>
+                                            <dt>Vin#:</dt>
+                                            <dd>TBD</dd>
+                                        </dl>
+
+                                        <h2>Features</h2>
+                                        <dl class="specs">
+                                            <dt>Clearance Lights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Taillights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Undercoating:</dt>
+                                            <dd>Primer prior to paint</dd>
+                                        </dl>
+
+                                        <h2>Dimensions</h2>
+                                        <dl class="specs">
+                                            <dt>Overall Length:</dt>
+                                            <dd>19'8" (Includes tongue length)</dd>
+                                            <dt>Overall Width:</dt>
+                                            <dd>8' 0" (includes fenders width)</dd>
+                                            <dt>Overall Height:</dt>
+                                            <dd>2' 8"</dd>
+                                            <dt>Interior Length:</dt>
+                                            <dd>16' 0"</dd>
+                                            <dt>Interior Width:</dt>
+                                            <dd>6' 4"</dd>
+                                            <dt>Interior Height:</dt>
+                                            <dd>1' 2"</dd>
+                                            <dt>Rear Door Height:</dt>
+                                            <dd>33" or 48" (dovetail/straight bed)</dd>
+                                            <dt>Rear Door Width:</dt>
+                                            <dd>6'4"</dd>
+                                            <dt>Hitch Height:</dt>
+                                            <dd>20"</dd>
+                                        </dl>
+
+                                        <h2>Axles and Brakes</h2>
+                                        <dl class="specs">
+                                            <dt>GVWR:</dt>
+                                            <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
+                                            <dt>Empty Weight:</dt>
+                                            <dd>1500 lbs.</dd>
+                                            <dt>Suspension:</dt>
+                                            <dd>Spring Axle</dd>
+                                            <dt>Brakes:</dt>
+                                            <dd>Electric brakes on 1 axle standard (both axles available)</dd>
+                                        </dl>
+
+                                        <h2>Construction</h2>
+                                        <dl class="specs">
+                                            <dt>Frame:</dt>
+                                            <dd>Angle</dd>
+                                            <dt>Flooring:</dt>
+                                            <dd>Wood</dd>
+                                            <dt>Spare Tire Mount:</dt>
+                                            <dd>Included</dd>
+                                            <dt>Rear:</dt>
+                                            <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 20' trailer -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-[#002868]">20' Utility Trailer TA</h2>
+                                <div class="flex items-center mb-4">
+                                    <img src="16TA.webp" alt="Utility Trailer" class="w-[10px] h-[10px] object-cover mr-4">
+                                    <h3 class="text-xl font-bold"></h3>
+                                </div>
+                                <div class="mb-4">
+                                    <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                    onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                    Click for Description ▼
+                                    </button>
+                                    <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                        <h1>6.4X20TA Utility Trailer</h1>
+                                        <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+
+                                        <h2>Trailer Details</h2>
+                                        <dl class="specs">
+                                            <dt>Color:</dt>
+                                            <dd>Black</dd>
+                                            <dt>Size:</dt>
+                                            <dd>6'4" X 20' Utility Trailer (Dovetail and Straight Bed Available)</dd>
+                                            <dt>Tires:</dt>
+                                            <dd>Radial 205/75R/15</dd>
+                                            <dt>Wheels:</dt>
+                                            <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
+                                            <dt>Ball / Plug Type:</dt>
+                                            <dd>2" / 7 round pin</dd>
+                                            <dt>Vin#:</dt>
+                                            <dd>TBD</dd>
+                                        </dl>
+
+                                        <h2>Features</h2>
+                                        <dl class="specs">
+                                            <dt>Clearance Lights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Taillights:</dt>
+                                            <dd>LED</dd>
+                                            <dt>Undercoating:</dt>
+                                            <dd>Primer prior to paint</dd>
+                                        </dl>
+
+                                        <h2>Dimensions</h2>
+                                        <dl class="specs">
+                                            <dt>Overall Length:</dt>
+                                            <dd>19'8" (Includes tongue length)</dd>
+                                            <dt>Overall Width:</dt>
+                                            <dd>8' 0" (includes fenders width)</dd>
+                                            <dt>Overall Height:</dt>
+                                            <dd>2' 8"</dd>
+                                            <dt>Interior Length:</dt>
+                                            <dd>16' 0"</dd>
+                                            <dt>Interior Width:</dt>
+                                            <dd>6' 4"</dd>
+                                            <dt>Interior Height:</dt>
+                                            <dd>1' 2"</dd>
+                                            <dt>Rear Door Height:</dt>
+                                            <dd>33" or 48" (dovetail/straight bed)</dd>
+                                            <dt>Rear Door Width:</dt>
+                                            <dd>6'4"</dd>
+                                            <dt>Hitch Height:</dt>
+                                            <dd>20"</dd>
+                                        </dl>
+
+                                        <h2>Axles and Brakes</h2>
+                                        <dl class="specs">
+                                            <dt>GVWR:</dt>
+                                            <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
+                                            <dt>Empty Weight:</dt>
+                                            <dd>1500 lbs.</dd>
+                                            <dt>Suspension:</dt>
+                                            <dd>Spring Axle</dd>
+                                            <dt>Brakes:</dt>
+                                            <dd>Electric brakes on 1 axle standard (both axles available)</dd>
+                                        </dl>
+
+                                        <h2>Construction</h2>
+                                        <dl class="specs">
+                                            <dt>Frame:</dt>
+                                            <dd>Angle</dd>
+                                            <dt>Flooring:</dt>
+                                            <dd>Wood</dd>
+                                            <dt>Spare Tire Mount:</dt>
+                                            <dd>Included</dd>
+                                            <dt>Rear:</dt>
+                                            <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View All Trailers Button -->
+                    <div class="text-center mt-12">
+                        <button id="specsButton" onclick="toggleAllSpecs()" class="btn-red px-8 py-3 rounded-lg text-lg inline-block">
+                        View All Specifications
+                    </button>                  
+                    </div>
+                        <!-- All Specifications Table Container -->
+                        <div id="allSpecsContainer" class="mb-12">
+                        <div class="overflow-x-auto">
+                            <table class="specs-table">
+                                <tr>
+                                    <th>Specification</th>
+                                    <th>10' Trailer</th>
+                                    <th>12' Trailer</th>
+                                    <th>14' Trailer</th>
+                                    <th>16' Trailer</th>
+                                    <th>20' Trailer</th>
+                                </tr>
+                                <tr>
+                                    <td>Color</td>
+                                    <td>Black</td>
+                                    <td>Black</td>
+                                    <td>Black</td>
+                                    <td>Black</td>
+                                    <td>Black</td>
+                                </tr>
+                                <tr>
+                                    <td>Size</td>
+                                    <td>6'4" X 10' Utility Trailer</td>
+                                    <td>6'4" X 12' Utility Trailer</td>
+                                    <td>6'4" X 14' Utility Trailer</td>
+                                    <td>6'4" X 16' Utility Trailer</td>
+                                    <td>6'4" X 20' Utility Trailer</td>
+                                </tr>
+                                <tr>
+                                    <td>Tires</td>
+                                    <td>Radial 205/75R/15</td>
+                                    <td>Radial 205/75R/15</td>
+                                    <td>Radial 205/75R/15</td>
+                                    <td>Radial 205/75R/15</td>
+                                    <td>Radial 205/75R/15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wheels</td>
+                                    <td>15" 5x4.75" metal wheels, Black or Grey</td>
+                                    <td>15" 5x4.75" metal wheels, Black or Grey</td>
+                                    <td>15" 5x4.75" metal wheels, Black or Grey</td>
+                                    <td>15" 5x4.75" metal wheels, Black or Grey</td>
+                                    <td>15" 5x4.75" metal wheels, Black or Grey</td>
+                                </tr>
+                                <tr>
+                                    <td>Ball / Plug Type</td>
+                                    <td>2" / 4-straight</td>
+                                    <td>2" / 4-straight</td>
+                                    <td>2" / 4-straight</td>
+                                    <td>2" / 4-straight</td>
+                                    <td>2" / 4-straight</td>
+                                </tr>
+                                <tr>
+                                    <td>Vin#</td>
+                                    <td>TBD</td>
+                                    <td>TBD</td>
+                                    <td>TBD</td>
+                                    <td>TBD</td>
+                                    <td>TBD</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="py-16 px-4" id="about">
+                <div class="card-background p-8 rounded-lg shadow-lg">
+                    <h2 class="text-3xl font-bold mb-12 text-center text-[#002868]">The American Difference</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🌟</div>
+                            <h3 class="text-xl font-bold mb-2 text-[#002868]">American-Made</h3>
+                            <p class="text-gray-600">Built with pride in Tennessee</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">💪</div>
+                            <h3 class="text-xl font-bold mb-2 text-[#002868]">American Quality</h3>
+                            <p class="text-gray-600">Built to last generations</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🛠️</div>
+                            <h3 class="text-xl font-bold mb-2 text-[#002868]">Local Service</h3>
+                            <p class="text-gray-600">Supporting local economy</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🦅</div>
+                            <h3 class="text-xl font-bold mb-2 text-[#002868]">American Values</h3>
+                            <p class="text-gray-600">Family-owned and operated</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="trailerjoe-orders.html" class="btn-blue px-8 py-3 rounded-lg text-lg inline-block">Order a Trailer</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Featured Products -->
-            <div class="container mx-auto py-16 px-4" id="inventory">
-                <div class="card-background p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl font-bold mb-12 text-center text-[#002868]">Featured Utility Trailers</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      <!-- 10' Trailers -->
-                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                          <div class="p-6">
-                              <h2 class="text-2xl font-bold text-[#002868]">10' Utility Trailer SA/TA</h2>
-                              <div class="flex items-center mb-4">
-                                  <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
-                                  <h3 class="text-xl font-bold"></h3>
-                              </div>
-                              <div class="mb-4">
-                                  <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
-                                  onclick="this.nextElementSibling.classList.toggle('hidden')">
-                                  Click for Description ▼
-                                  </button>
-                                  <div class="hidden mt-2 p-3 bg-gray-50 rounded">
-                                      <h1>6.4X10TA Utility Trailer</h1>
-                                      <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
+            <!-- Contact Section -->
+            <div class="py-16 px-4" id="contact">
+                <div class="max-w-6xl mx-auto">
+                    <div class="bg-navy p-8 rounded-t-lg shadow-lg border-t-4 border-x-4 border-[#bb0000]" style="background-color: #000080;">
+                        <h2 class="text-4xl font-bold mb-12 text-center text-white relative">
+                            <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-[#bb0000]"></span>
+                            Contact Trailer Joe's
+                            <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-[#bb0000]"></span>
+                        </h2>
+                    </div>
+                    <div class="bg-white p-8 rounded-b-lg shadow-lg border-b-4 border-x-4 border-[#bb0000]">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <!-- Contact Information -->
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-4 text-[#002868]">Visit Our Location</h3>
+                                    <p class="text-gray-700 text-lg">
+                                        Aztec Rd & Highway 70<br>
+                                        County Line RV Storage<br>
+                                        Arlington, TN 38002
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-4 text-[#002868]">Contact Information</h3>
+                                    <p class="text-gray-700 text
+                                    -700 text-lg">
+                                    Phone: <a href="tel:901.461.7161" class="text-[#bb0000] hover:underline">901.461.7161</a><br>
+                                    Email: <a href="mailto:sales@trailerjoestn.com" class="text-[#bb0000] hover:underline">sales@trailerjoestn.com</a>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4 text-[#002868]">Business Hours</h3>
+                                <p class="text-gray-700 text-lg">
+                                    Monday - Friday: 9:00 AM - 5:00 PM<br>
+                                    Saturday: By Appointment<br>
+                                    Sunday: Closed
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
 
-                                      <h2>Trailer Details</h2>
-                                      <dl class="specs">
-                                          <dt>Color:</dt>
-                                          <dd>Black</dd>
-                                          <dt>Size:</dt>
-                                          <dd>6'4" X 10 Utility Trailer (Dovetail and Straight Bed Available)</dd>
-                                          <dt>Tires:</dt>
-                                          <dd>Radial 205/75R/15</dd>
-                                          <dt>Wheels:</dt>
-                                          <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
-                                          <dt>Ball / Plug Type:</dt>
-                                          <dd>2" / 4-straight</dd>
-                                          <dt>Vin#:</dt>
-                                          <dd>TBD</dd>
-                                      </dl>
+                        <div>
+                            <form action="mailto:joeteverson@gmail.com?subject=Message" method="post" enctype="text/plain">
+                                <h3 class="text-2xl font-bold mb-6 text-[#002868]">Send Us a Message</h3>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2 text-lg" for="name">Name</label>
+                                    <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2 text-lg" for="email">Email</label>
+                                    <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2 text-lg" for="message">Message</label>
+                                    <textarea id="message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required></textarea>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Submit" style="width: 100%; padding: 0.75rem 1.5rem; background-color: #002868; color: white; border-radius: 0.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; border: 2px solid #bb0000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#001845'" onmouseout="this.style.backgroundColor='#002868'">
+                                </div>
+                                <input type="hidden" name="confidential" value="true">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <h3 class="text-2xl font-bold mb-6 text-[#002868]">Find Us on the Map</h3>
+                        <div class="rounded-lg overflow-hidden shadow-lg border-4 border-[#bb0000]">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.566156524582!2d-89.62762568426698!3d35.32005718028546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDE5JzEyLjIiTiA4OcKwMzcnMzEuNiJX!5e0!3m2!1sen!2sus!4v1697574897883!5m2!1sen!2sus" 
+                                width="100%"
+                                height="400"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>                
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    </div>
 
-                                      <h2>Features</h2>
-                                      <dl class="specs">
-                                          <dt>Clearance Lights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Taillights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Undercoating:</dt>
-                                          <dd>Primer prior to paint</dd>
-                                      </dl>
-
-                                      <h2>Dimensions</h2>
-                                      <dl class="specs">
-                                          <dt>Overall Length:</dt>
-                                          <dd>13'8" (Includes tongue length)</dd>
-                                          <dt>Overall Width:</dt>
-                                          <dd>8' 0" (includes fenders width)</dd>
-                                          <dt>Overall Height:</dt>
-                                          <dd>2' 8"</dd>
-                                          <dt>Interior Length:</dt>
-                                          <dd>10' 0"</dd>
-                                          <dt>Interior Width:</dt>
-                                          <dd>6' 4"</dd>
-                                          <dt>Interior Height:</dt>
-                                          <dd>1' 2"</dd>
-                                          <dt>Rear Door Height:</dt>
-                                          <dd>33" or 48"</dd>
-                                          <dt>Rear Door Width:</dt>
-                                          <dd>6'4"</dd>
-                                          <dt>Hitch Height:</dt>
-                                          <dd>20"</dd>
-                                      </dl>
-
-                                      <h2>Axles and Brakes</h2>
-                                      <dl class="specs">
-                                          <dt>GVWR:</dt>
-                                          <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
-                                          <dt>Carrying Capacity:</dt>
-                                          <dd>6050 lbs.</dd>
-                                          <dt>Empty Weight:</dt>
-                                          <dd>950 lbs.</dd>
-                                          <dt>Suspension:</dt>
-                                          <dd>Spring Axle</dd>
-                                          <dt>Brakes:</dt>
-                                          <dd>No (unless ordered)</dd>
-                                      </dl>
-
-                                      <h2>Construction</h2>
-                                      <dl class="specs">
-                                          <dt>Frame:</dt>
-                                          <dd>Angle</dd>
-                                          <dt>Flooring:</dt>
-                                          <dd>Wood</dd>
-                                          <dt>Spare Tire Mount:</dt>
-                                          <dd>Included</dd>
-                                          <dt>Rear:</dt>
-                                          <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <div class="flex justify-between items-center">
-                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- 12' trailer -->
-                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                          <div class="p-6">
-                              <h2 class="text-2xl font-bold text-[#002868]">12' Utility Trailer SA/TA</h2>
-                              <div class="flex items-center mb-4">
-                                  <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
-                                  <h3 class="text-xl font-bold"></h3>
-                              </div>
-                              <div class="mb-4">
-                                  <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
-                                  onclick="this.nextElementSibling.classList.toggle('hidden')">
-                                  Click for Description ▼
-                                  </button>
-                                  <div class="hidden mt-2 p-3 bg-gray-50 rounded">
-                                      <h1>6.4X12TA Utility Trailer</h1>
-                                      <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
-
-                                      <h2>Trailer Details</h2>
-                                      <dl class="specs">
-                                          <dt>Color:</dt>
-                                          <dd>Black</dd>
-                                          <dt>Size:</dt>
-                                          <dd>6'4" X 12 Utility Trailer (Dovetail and Straight Bed Available)</dd>
-                                          <dt>Tires:</dt>
-                                          <dd>Radial 205/75R/15</dd>
-                                          <dt>Wheels:</dt>
-                                          <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
-                                          <dt>Ball / Plug Type:</dt>
-                                          <dd>2" / 4-straight</dd>
-                                          <dt>Vin#:</dt>
-                                          <dd>TBD</dd>
-                                      </dl>
-
-                                      <h2>Features</h2>
-                                      <dl class="specs">
-                                          <dt>Clearance Lights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Taillights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Undercoating:</dt>
-                                          <dd>Primer prior to paint</dd>
-                                      </dl>
-
-                                      <h2>Dimensions</h2>
-                                      <dl class="specs">
-                                          <dt>Overall Length:</dt>
-                                          <dd>15' 8" (Includes tongue length)</dd>
-                                          <dt>Overall Width:</dt>
-                                          <dd>8' 0" (includes fenders width)</dd>
-                                          <dt>Overall Height:</dt>
-                                          <dd>2' 8"</dd>
-                                          <dt>Interior Length:</dt>
-                                          <dd>12' 0"</dd>
-                                          <dt>Interior Width:</dt>
-                                          <dd>6' 4"</dd>
-                                          <dt>Interior Height:</dt>
-                                          <dd>1' 2"</dd>
-                                          <dt>Rear Door Height:</dt>
-                                          <dd>33" or 48" (dovetail/straight bed)</dd>
-                                          <dt>Rear Door Width:</dt>
-                                          <dd>6'4"</dd>
-                                          <dt>Hitch Height:</dt>
-                                          <dd>20"</dd>
-                                      </dl>
-
-                                      <h2>Axles and Brakes</h2>
-                                      <dl class="specs">
-                                          <dt>GVWR:</dt>
-                                          <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
-                                          <dt>Empty Weight:</dt>
-                                          <dd>1050 lbs.</dd>
-                                          <dt>Carrying Capacity:</dt>
-                                          <dd>5950 lbs.</dd>
-                                          <dt>Suspension:</dt>
-                                          <dd>Spring Axle</dd>
-                                          <dt>Brakes:</dt>
-                                          <dd>No (unless ordered)</dd>
-                                      </dl>
-
-                                      <h2>Construction</h2>
-                                      <dl class="specs">
-                                          <dt>Frame:</dt>
-                                          <dd>Angle</dd>
-                                          <dt>Flooring:</dt>
-                                          <dd>Wood</dd>
-                                          <dt>Spare Tire Mount:</dt>
-                                          <dd>Included</dd>
-                                          <dt>Rear:</dt>
-                                          <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <div class="flex justify-between items-center">
-                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- 14' trailer -->
-                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                          <div class="p-6">
-                              <h2 class="text-2xl font-bold text-[#002868]">14' Utility Trailer SA/TA</h2>
-                              <div class="flex items-center mb-4">
-                                  <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
-                                  <h3 class="text-xl font-bold"></h3>
-                              </div>
-                              <div class="mb-4">
-                                  <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
-                                  onclick="this.nextElementSibling.classList.toggle('hidden')">
-                                  Click for Description ▼
-                                  </button>
-                                  <div class="hidden mt-2 p-3 bg-gray-50 rounded">
-                                      <h1>6.4X14TA Utility Trailer</h1>
-                                      <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
-
-                                      <h2>Trailer Details</h2>
-                                      <dl class="specs">
-                                          <dt>Color:</dt>
-                                          <dd>Black</dd>
-                                          <dt>Size:</dt>
-                                          <dd>6'4" X 14 Utility Trailer. Dovetail and Straight Bed Available</dd>
-                                          <dt>Tires:</dt>
-                                          <dd>Radial 205/75R/15</dd>
-                                          <dt>Wheels:</dt>
-                                          <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
-                                          <dt>Ball / Plug Type:</dt>
-                                          <dd>2" / 4-straight or 7 pin</dd>
-                                          <dt>Vin#:</dt>
-                                          <dd>TBD</dd>
-                                      </dl>
-
-                                      <h2>Features</h2>
-                                      <dl class="specs">
-                                          <dt>Clearance Lights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Taillights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Undercoating:</dt>
-                                          <dd>Primer prior to paint</dd>
-                                      </dl>
-
-                                      <h2>Dimensions</h2>
-                                      <dl class="specs">
-                                          <dt>Overall Length:</dt>
-                                          <dd>17'8" (Includes tongue length)</dd>
-                                          <dt>Overall Width:</dt>
-                                          <dd>8' 0" (includes fenders width)</dd>
-                                          <dt>Overall Height:</dt>
-                                          <dd>2' 8"</dd>
-                                          <dt>Interior Length:</dt>
-                                          <dd>14' 0"</dd>
-                                          <dt>Interior Width:</dt>
-                                          <dd>6' 4"</dd>
-                                          <dt>Interior Height:</dt>
-                                          <dd>1' 2"</dd>
-                                          <dt>Rear Door Height:</dt>
-                                          <dd>33" or 48" (dovetail/straight bed)</dd>
-                                          <dt>Rear Door Width:</dt>
-                                          <dd>6'4"</dd>
-                                          <dt>Hitch Height:</dt>
-                                          <dd>20"</dd>
-                                      </dl>
-
-                                      <h2>Axles and Brakes</h2>
-                                      <dl class="specs">
-                                          <dt>GVWR:</dt>
-                                          <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
-                                          <dt>Empty Weight:</dt>
-                                          <dd>1050 lbs.</dd>
-                                          <dt>Suspension:</dt>
-                                          <dd>Spring Axle</dd>
-                                          <dt>Brakes:</dt>
-                                          <dd>Electric brakes on 1 axle</dd>
-                                      </dl>
-
-                                      <h2>Construction</h2>
-                                      <dl class="specs">
-                                          <dt>Frame:</dt>
-                                          <dd>Angle</dd>
-                                          <dt>Flooring:</dt>
-                                          <dd>Wood</dd>
-                                          <dt>Spare Tire Mount:</dt>
-                                          <dd>Included</dd>
-                                          <dt>Rear:</dt>
-                                          <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <div class="flex justify-between items-center">
-                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                      <!-- 16' Trailers -->
-                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                          <div class="p-6">
-                              <h2 class="text-2xl font-bold text-[#002868]">16' Utility Trailer TA</h2>
-                              <div class="flex items-center mb-4">
-                                  <img src="16TA.webp" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
-                                  <h3 class="text-xl font-bold"></h3>
-                              </div>
-                              <div class="mb-4">
-                                  <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
-                                  onclick="this.nextElementSibling.classList.toggle('hidden')">
-                                  Click for Description ▼
-                                  </button>
-                                  <div class="hidden mt-2 p-3 bg-gray-50 rounded">
-                                      <h1>6.4X16TA Utility Trailer</h1>
-                                      <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
-
-                                      <h2>Trailer Details</h2>
-                                      <dl class="specs">
-                                          <dt>Color:</dt>
-                                          <dd>Black</dd>
-                                          <dt>Size:</dt>
-                                          <dd>6'4" X 16' Utility Trailer (Dovetail and Straight Bed Available)</dd>
-                                          <dt>Tires:</dt>
-                                          <dd>Radial 205/75R/15</dd>
-                                          <dt>Wheels:</dt>
-                                          <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
-                                          <dt>Ball / Plug Type:</dt>
-                                          <dd>2" / 7 round pin</dd>
-                                          <dt>Vin#:</dt>
-                                          <dd>TBD</dd>
-                                      </dl>
-
-                                      <h2>Features</h2>
-                                      <dl class="specs">
-                                          <dt>Clearance Lights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Taillights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Undercoating:</dt>
-                                          <dd>Primer prior to paint</dd>
-                                      </dl>
-
-                                      <h2>Dimensions</h2>
-                                      <dl class="specs">
-                                          <dt>Overall Length:</dt>
-                                          <dd>19'8" (Includes tongue length)</dd>
-                                          <dt>Overall Width:</dt>
-                                          <dd>8' 0" (includes fenders width)</dd>
-                                          <dt>Overall Height:</dt>
-                                          <dd>2' 8"</dd>
-                                          <dt>Interior Length:</dt>
-                                          <dd>16' 0"</dd>
-                                          <dt>Interior Width:</dt>
-                                          <dd>6' 4"</dd>
-                                          <dt>Interior Height:</dt>
-                                          <dd>1' 2"</dd>
-                                          <dt>Rear Door Height:</dt>
-                                          <dd>33" or 48" (dovetail/straight bed)</dd>
-                                          <dt>Rear Door Width:</dt>
-                                          <dd>6'4"</dd>
-                                          <dt>Hitch Height:</dt>
-                                          <dd>20"</dd>
-                                      </dl>
-
-                                      <h2>Axles and Brakes</h2>
-                                      <dl class="specs">
-                                          <dt>GVWR:</dt>
-                                          <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
-                                          <dt>Empty Weight:</dt>
-                                          <dd>1500 lbs.</dd>
-                                          <dt>Suspension:</dt>
-                                          <dd>Spring Axle</dd>
-                                          <dt>Brakes:</dt>
-                                          <dd>Electric brakes on 1 axle standard (both axles available)</dd>
-                                      </dl>
-
-                                      <h2>Construction</h2>
-                                      <dl class="specs">
-                                          <dt>Frame:</dt>
-                                          <dd>Angle</dd>
-                                          <dt>Flooring:</dt>
-                                          <dd>Wood</dd>
-                                          <dt>Spare Tire Mount:</dt>
-                                          <dd>Included</dd>
-                                          <dt>Rear:</dt>
-                                          <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <div class="flex justify-between items-center">
-                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- 20' trailer -->
-                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                          <div class="p-6">
-                              <h2 class="text-2xl font-bold text-[#002868]">20' Utility Trailer TA</h2>
-                              <div class="flex items-center mb-4">
-                                  <img src="16TA.webp" alt="Utility Trailer" class="w-[10px] h-[10px] object-cover mr-4">
-                                  <h3 class="text-xl font-bold"></h3>
-                              </div>
-                              <div class="mb-4">
-                                  <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
-                                  onclick="this.nextElementSibling.classList.toggle('hidden')">
-                                  Click for Description ▼
-                                  </button>
-                                  <div class="hidden mt-2 p-3 bg-gray-50 rounded">
-                                      <h1>6.4X20TA Utility Trailer</h1>
-                                      <p><strong>Manufactured/Warranty by Hughes Trailers, Alamo TN.</strong></p>
-
-                                      <h2>Trailer Details</h2>
-                                      <dl class="specs">
-                                          <dt>Color:</dt>
-                                          <dd>Black</dd>
-                                          <dt>Size:</dt>
-                                          <dd>6'4" X 20' Utility Trailer (Dovetail and Straight Bed Available)</dd>
-                                          <dt>Tires:</dt>
-                                          <dd>Radial 205/75R/15</dd>
-                                          <dt>Wheels:</dt>
-                                          <dd>15" 5x4.75" metal wheels, Black or Grey</dd>
-                                          <dt>Ball / Plug Type:</dt>
-                                          <dd>2" / 7 round pin</dd>
-                                          <dt>Vin#:</dt>
-                                          <dd>TBD</dd>
-                                      </dl>
-
-                                      <h2>Features</h2>
-                                      <dl class="specs">
-                                          <dt>Clearance Lights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Taillights:</dt>
-                                          <dd>LED</dd>
-                                          <dt>Undercoating:</dt>
-                                          <dd>Primer prior to paint</dd>
-                                      </dl>
-
-                                      <h2>Dimensions</h2>
-                                      <dl class="specs">
-                                          <dt>Overall Length:</dt>
-                                          <dd>19'8" (Includes tongue length)</dd>
-                                          <dt>Overall Width:</dt>
-                                          <dd>8' 0" (includes fenders width)</dd>
-                                          <dt>Overall Height:</dt>
-                                          <dd>2' 8"</dd>
-                                          <dt>Interior Length:</dt>
-                                          <dd>16' 0"</dd>
-                                          <dt>Interior Width:</dt>
-                                          <dd>6' 4"</dd>
-                                          <dt>Interior Height:</dt>
-                                          <dd>1' 2"</dd>
-                                          <dt>Rear Door Height:</dt>
-                                          <dd>33" or 48" (dovetail/straight bed)</dd>
-                                          <dt>Rear Door Width:</dt>
-                                          <dd>6'4"</dd>
-                                          <dt>Hitch Height:</dt>
-                                          <dd>20"</dd>
-                                      </dl>
-
-                                      <h2>Axles and Brakes</h2>
-                                      <dl class="specs">
-                                          <dt>GVWR:</dt>
-                                          <dd>7000 lbs. (TANDEM 3500 lbs. EZ Lube, Dexter Axles or equivalent)</dd>
-                                          <dt>Empty Weight:</dt>
-                                          <dd>1500 lbs.</dd>
-                                          <dt>Suspension:</dt>
-                                          <dd>Spring Axle</dd>
-                                          <dt>Brakes:</dt>
-                                          <dd>Electric brakes on 1 axle standard (both axles available)</dd>
-                                      </dl>
-
-                                      <h2>Construction</h2>
-                                      <dl class="specs">
-                                          <dt>Frame:</dt>
-                                          <dd>Angle</dd>
-                                          <dt>Flooring:</dt>
-                                          <dd>Wood</dd>
-                                          <dt>Spare Tire Mount:</dt>
-                                          <dd>Included</dd>
-                                          <dt>Rear:</dt>
-                                          <dd>Gate with 2 extra uprights (removeable/ folds in or outwards)</dd>
-                                      </dl>
-                                  </div>
-                              </div>
-                              <div class="flex justify-between items-center">
-                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <!-- View All Trailers Button -->
-                  <div class="text-center mt-12">
-                    <button id="specsButton" onclick="toggleAllSpecs()" class="btn-red px-8 py-3 rounded-lg text-lg inline-block">
-                      View All Specifications
-                  </button>                  
-                  </div>
-                    <!-- All Specifications Table Container -->
-                    <div id="allSpecsContainer" class="mb-12">
-                      <div class="overflow-x-auto">
-                          <table class="specs-table">
-                              <tr>
-                                  <th>Specification</th>
-                                  <th>10' Trailer</th>
-                                  <th>12' Trailer</th>
-                                  <th>14' Trailer</th>
-                                  <th>16' Trailer</th>
-                                  <th>20' Trailer</th>
-                              </tr>
-                              <tr>
-                                  <td>Color</td>
-                                  <td>Black</td>
-                                  <td>Black</td>
-                                  <td>Black</td>
-                                  <td>Black</td>
-                                  <td>Black</td>
-                              </tr>
-                              <tr>
-                                  <td>Size</td>
-                                  <td>6'4" X 10' Utility Trailer</td>
-                                  <td>6'4" X 12' Utility Trailer</td>
-                                  <td>6'4" X 14' Utility Trailer</td>
-                                  <td>6'4" X 16' Utility Trailer</td>
-                                  <td>6'4" X 20' Utility Trailer</td>
-                              </tr>
-                              <tr>
-                                  <td>Tires</td>
-                                  <td>Radial 205/75R/15</td>
-                                  <td>Radial 205/75R/15</td>
-                                  <td>Radial 205/75R/15</td>
-                                  <td>Radial 205/75R/15</td>
-                                  <td>Radial 205/75R/15</td>
-                              </tr>
-                              <tr>
-                                  <td>Wheels</td>
-                                  <td>15" 5x4.75" metal wheels, Black or Grey</td>
-                                  <td>15" 5x4.75" metal wheels, Black or Grey</td>
-                                  <td>15" 5x4.75" metal wheels, Black or Grey</td>
-                                  <td>15" 5x4.75" metal wheels, Black or Grey</td>
-                                  <td>15" 5x4.75" metal wheels, Black or Grey</td>
-                              </tr>
-                              <tr>
-                                  <td>Ball / Plug Type</td>
-                                  <td>2" / 4-straight</td>
-                                  <td>2" / 4-straight</td>
-                                  <td>2" / 4-straight</td>
-                                  <td>2" / 4-straight</td>
-                                  <td>2" / 4-straight</td>
-                              </tr>
-                              <tr>
-                                  <td>Vin#</td>
-                                  <td>TBD</td>
-                                  <td>TBD</td>
-                                  <td>TBD</td>
-                                  <td>TBD</td>
-                                  <td>TBD</td>
-                              </tr>
-                          </table>
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-
-          <!-- Why Choose Us -->
-          <div class="py-16 px-4" id="about">
-              <div class="card-background p-8 rounded-lg shadow-lg">
-                  <h2 class="text-3xl font-bold mb-12 text-center text-[#002868]">The American Difference</h2>
-                  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                      <div class="text-center">
-                          <div class="text-4xl mb-4">🌟</div>
-                          <h3 class="text-xl font-bold mb-2 text-[#002868]">American-Made</h3>
-                          <p class="text-gray-600">Built with pride in Tennessee</p>
-                      </div>
-                      <div class="text-center">
-                          <div class="text-4xl mb-4">💪</div>
-                          <h3 class="text-xl font-bold mb-2 text-[#002868]">American Quality</h3>
-                          <p class="text-gray-600">Built to last generations</p>
-                      </div>
-                      <div class="text-center">
-                          <div class="text-4xl mb-4">🛠️</div>
-                          <h3 class="text-xl font-bold mb-2 text-[#002868]">Local Service</h3>
-                          <p class="text-gray-600">Supporting local economy</p>
-                      </div>
-                      <div class="text-center">
-                          <div class="text-4xl mb-4">🦅</div>
-                          <h3 class="text-xl font-bold mb-2 text-[#002868]">American Values</h3>
-                          <p class="text-gray-600">Family-owned and operated</p>
-                      </div>
-                  </div>
-                  <div class="text-center mt-12">
-                      <a href="trailerjoe-orders.html" class="btn-blue px-8 py-3 rounded-lg text-lg inline-block">Order a Trailer</a>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Contact Section -->
-          <div class="py-16 px-4" id="contact">
-              <div class="max-w-6xl mx-auto">
-                  <div class="bg-navy p-8 rounded-t-lg shadow-lg border-t-4 border-x-4 border-[#bb0000]" style="background-color: #000080;">
-                      <h2 class="text-4xl font-bold mb-12 text-center text-white relative">
-                          <span class="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-[#bb0000]"></span>
-                          Contact Trailer Joe's
-                          <span class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-[#bb0000]"></span>
-                      </h2>
-                  </div>
-                  <div class="bg-white p-8 rounded-b-lg shadow-lg border-b-4 border-x-4 border-[#bb0000]">
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                          <!-- Contact Information -->
-                          <div class="space-y-8">
-                              <div>
-                                  <h3 class="text-2xl font-bold mb-4 text-[#002868]">Visit Our Location</h3>
-                                  <p class="text-gray-700 text-lg">
-                                      Aztec Rd & Highway 70<br>
-                                      County Line RV Storage<br>
-                                      Arlington, TN 38002
-                                  </p>
-                              </div>
-                              <div>
-                                  <h3 class="text-2xl font-bold mb-4 text-[#002868]">Contact Information</h3>
-                                  <p class="text-gray-700 text
-                                  -700 text-lg">
-                                  Phone: <a href="tel:901.461.7161" class="text-[#bb0000] hover:underline">901.461.7161</a><br>
-                                  Email: <a href="mailto:sales@trailerjoestn.com" class="text-[#bb0000] hover:underline">sales@trailerjoestn.com</a>
-                              </p>
-                          </div>
-                          <div>
-                              <h3 class="text-2xl font-bold mb-4 text-[#002868]">Business Hours</h3>
-                              <p class="text-gray-700 text-lg">
-                                  Monday - Friday: 9:00 AM - 5:00 PM<br>
-                                  Saturday: By Appointment<br>
-                                  Sunday: Closed
-                              </p>
-                          </div>
-                      </div>
-                      
-                      <!-- Contact Form -->
-
-                      <div>
-                        <form action="mailto:joeteverson@gmail.com?subject=Message" method="post" enctype="text/plain">
-                            <h3 class="text-2xl font-bold mb-6 text-[#002868]">Send Us a Message</h3>
-                              <div>
-                                  <label class="block text-gray-700 font-semibold mb-2 text-lg" for="name">Name</label>
-                                  <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required>
-                              </div>
-                              <div>
-                                  <label class="block text-gray-700 font-semibold mb-2 text-lg" for="email">Email</label>
-                                  <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required>
-                              </div>
-                              <div>
-                                  <label class="block text-gray-700 font-semibold mb-2 text-lg" for="message">Message</label>
-                                  <textarea id="message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#002868] focus:ring-2 focus:ring-[#002868] text-lg" required></textarea>
-                              </div>
-                              <div>
-                                  <input type="submit" value="Submit" style="width: 100%; padding: 0.75rem 1.5rem; background-color: #002868; color: white; border-radius: 0.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; border: 2px solid #bb0000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#001845'" onmouseout="this.style.backgroundColor='#002868'">
-                              </div>
-                              <input type="hidden" name="confidential" value="true">
-                          </form>
-                      </div>
-                  </div>
-                  <div class="mt-12">
-                      <h3 class="text-2xl font-bold mb-6 text-[#002868]">Find Us on the Map</h3>
-                      <div class="rounded-lg overflow-hidden shadow-lg border-4 border-[#bb0000]">
-                          <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.566156524582!2d-89.62762568426698!3d35.32005718028546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDE5JzEyLjIiTiA4OcKwMzcnMzEuNiJX!5e0!3m2!1sen!2sus!4v1697574897883!5m2!1sen!2sus" 
-                              width="100%"
-                              height="400"
-                              style="border:0;"
-                              allowfullscreen=""
-                              loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade">
-                          </iframe>                
-                      </div>
-                  </div>
-              </div>
-          </div>    
-      </div>
-  </div>
-</div>
-
-<script>
-  function toggleAllSpecs() {
-      const container = document.getElementById('allSpecsContainer');
-      const button = document.querySelector('button');
-      
-      if (container.style.display === 'none' || !container.style.display) {
-          container.style.display = 'block';
-          button.textContent = 'Hide Specifications';
-          container.scrollIntoView({ behavior: 'smooth' });
-      } else {
-          container.style.display = 'none';
-          button.textContent = 'View All Specifications';
-      }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-      const accordionHeaders = document.querySelectorAll('.accordion-header');
-      
-      accordionHeaders.forEach(header => {
-          header.addEventListener('click', function() {
-              this.classList.toggle('active');
-              const content = this.nextElementSibling;
-              content.classList.toggle('active');
-              
-              accordionHeaders.forEach(otherHeader => {
-                  if (otherHeader !== header) {
-                      otherHeader.classList.remove('active');
-                      otherHeader.nextElementSibling.classList.remove('active');
-                  }
-              });
-          });
-      });
-  });
-
-  function toggleAllSpecs() {
-    const container = document.getElementById('allSpecsContainer');
-    const button = document.getElementById('specsButton');
-    
-    if (container.style.display === 'none' || !container.style.display) {
-        container.style.display = 'block';
-        button.textContent = 'Hide Specifications';
-        container.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        container.style.display = 'none';
-        button.textContent = 'View All Specifications';
+    <script>
+    function toggleAllSpecs() {
+        const container = document.getElementById('allSpecsContainer');
+        const button = document.querySelector('button');
+        
+        if (container.style.display === 'none' || !container.style.display) {
+            container.style.display = 'block';
+            button.textContent = 'Hide Specifications';
+            container.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            container.style.display = 'none';
+            button.textContent = 'View All Specifications';
+        }
     }
-}
-</script>
 
-</body>
-</html>                                                                            
+    document.addEventListener('DOMContentLoaded', function() {
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('active');
+                
+                accordionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        otherHeader.classList.remove('active');
+                        otherHeader.nextElementSibling.classList.remove('active');
+                    }
+                });
+            });
+        });
+    });
+
+    function toggleAllSpecs() {
+        const container = document.getElementById('allSpecsContainer');
+        const button = document.getElementById('specsButton');
+        
+        if (container.style.display === 'none' || !container.style.display) {
+            container.style.display = 'block';
+            button.textContent = 'Hide Specifications';
+            container.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            container.style.display = 'none';
+            button.textContent = 'View All Specifications';
+        }
+    }
+    </script>
+
+    </body>
+    </html>                                                                            
