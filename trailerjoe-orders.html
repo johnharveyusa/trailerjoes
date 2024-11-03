@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trailer Joes - Order Form</title>
+    <style>
+        /* All previous styles remain exactly the same */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('/api/placeholder/800/600') repeat,
+                        linear-gradient(45deg, #B22234 0%, #B22234 20%, 
+                                              #FFFFFF 20%, #FFFFFF 40%, 
+                                              #B22234 40%, #B22234 60%, 
+                                              #FFFFFF 60%, #FFFFFF 80%, 
+                                              #B22234 80%, #B22234 100%);
+            background-attachment: fixed;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #3C3B6E;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            border: 3px solid #3C3B6E;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .form-section h3 {
+            color: #3C3B6E;
+            border-bottom: 2px solid #B22234;
+            padding-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+            color: #3C3B6E;
+        }
+        .options-group {
+            margin: 10px 0;
+        }
+        .equipment-list {
+            background-color: rgba(60, 59, 110, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #3C3B6E;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #3C3B6E;
+            border-radius: 4px;
+        }
+        input[type="text"], 
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #3C3B6E;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #3C3B6E;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #B22234;
+        }
+        .options-group label {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Trailer Joes</h1>
+    </div>
+    <form action="mailto:joeteverson@gmail.com" method="post" enctype="text/plain">
+        <div class="form-section">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Info (phone# & email):</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
+        </div>
+
+        <!-- Rest of the form remains exactly the same -->
+        <div class="form-section">
+            <h3>Size Specifications</h3>
+            <div class="form-group">
+                <label>Width:</label>
+                <select name="width" required>
+                    <option value="">Select Width</option>
+                    <option value="6'4">6'4"</option>
+                    <option value="6'10">6'10"</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Length:</label>
+                <select name="length" required>
+                    <option value="">Select Length</option>
+                    <option value="8">8'</option>
+                    <option value="10">10'</option>
+                    <option value="12">12'</option>
+                    <option value="14">14'</option>
+                    <option value="16">16'</option>
+                    <option value="18">18'</option>
+                    <option value="20">20'</option>
+                    <option value="22">22'</option>
+                    <option value="24+">24'+</option>
+                </select>
+                <input type="text" name="other_length" placeholder="Other length">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Axle Configuration</h3>
+            <div class="form-group">
+                <label>Axle Type:</label>
+                <select name="axle_type" required>
+                    <option value="">Select Axle Type</option>
+                    <option value="single">Single</option>
+                    <option value="tandem">Tandem</option>
+                    <option value="tri-axle">Tri-Axle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Axle Size:</label>
+                <select name="axle_size" required>
+                    <option value="">Select Axle Size</option>
+                    <option value="3.5K">3.5K</option>
+                    <option value="5.2K">5.2K</option>
+                    <option value="6K">6K</option>
+                    <option value="8K">8K</option>
+                    <option value="10K">10K</option>
+                </select>
+                <input type="text" name="other_axle_size" placeholder="Other axle size">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Standard Equipment</h3>
+            <div class="equipment-list">
+                <p>• Angle Iron Frame w/ Full Wrapped C-Channel Tongue<br>
+                • Treated Wood Floors<br>
+                • 15" Radial Tires<br>
+                • LED Lights<br>
+                • Reinforced/Removable Drop Gate<br>
+                • Spare Tire Mount<br>
+                • 4 Tie Downs<br>
+                • Safety Chains<br>
+                • 2K Set Back Jack w/ Brace<br>
+                • 3.5K Axles<br>
+                • DOT Stickers<br>
+                • Reflector Tape</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Optional Upgrades</h3>
+            <div class="options-group">
+                <input type="checkbox" id="brakes1" name="upgrade_brakes">
+                <label for="brakes1">Electric Brakes on One or Both Axles</label><br>
+
+                <input type="checkbox" id="rail" name="upgrade_rail">
+                <label for="rail">Square Tube Top Rail and/or Up Rights</label><br>
+
+                <input type="checkbox" id="metal_floor" name="upgrade_metal_floor">
+                <label for="metal_floor">Expanded Metal (Mesh) Floor and/or Side Walls</label><br>
+
+                <input type="checkbox" id="diamond" name="upgrade_diamond">
+                <label for="diamond">Diamond Plate Floor and/or Fenders</label><br>
+
+                <input type="checkbox" id="coupler" name="upgrade_coupler">
+                <label for="coupler">Bull Nose or Adjustable Coupler</label><br>
+
+                <input type="checkbox" id="reverse" name="upgrade_reverse">
+                <label for="reverse">Reverse Lights</label><br>
+
+                <input type="checkbox" id="jack" name="upgrade_jack">
+                <label for="jack">Drop Leg Jack 7K or 10K</label><br>
+
+                <input type="checkbox" id="swivel" name="upgrade_swivel">
+                <label for="swivel">Swivel Jack w/Wheel or Plate</label><br>
+
+                <input type="checkbox" id="pockets" name="upgrade_pockets">
+                <label for="pockets">Stake Pockets</label><br>
+
+                <input type="checkbox" id="tilt" name="upgrade_tilt">
+                <label for="tilt">Tilt Bed Partial or Full Bed Tilt</label><br>
+
+                <input type="checkbox" id="car" name="upgrade_car">
+                <label for="car">Car Hauler</label><br>
+
+                <input type="checkbox" id="equipment" name="upgrade_equipment">
+                <label for="equipment">Equipment Hauler</label><br>
+
+                <input type="checkbox" id="landscaping" name="upgrade_landscaping">
+                <label for="landscaping">Landscaping Trailer w/without Equipment Box</label><br>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Other Customization</h3>
+            <textarea name="other_customization" placeholder="Enter any additional customization requests"></textarea>
+        </div>
+
+        <button type="submit">Submit Order</button>
+    </form>
+</body>
+</html>
