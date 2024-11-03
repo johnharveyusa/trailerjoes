@@ -86,6 +86,66 @@
             background-color: #990000;
         }
     </style>
+   <style>
+    /* Add these styles to your existing CSS */
+    .accordion-header {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        cursor: pointer;
+        border: 2px solid #002868;
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+        background-color: #e9ecef;
+    }
+
+    .accordion-header::after {
+        content: '+';
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    .accordion-header.active::after {
+        content: '-';
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-left: 2px solid #002868;
+        border-right: 2px solid #002868;
+        border-bottom: 2px solid #002868;
+        border-radius: 0 0 0.5rem 0.5rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .accordion-content.active {
+        max-height: 2000px; /* Adjust this value based on content height */
+    }
+
+    .accordion-inner {
+        padding: 1rem;
+        background-color: white;
+    }
+
+    /* Adjust existing card styles */
+    .trailer-card {
+        margin-bottom: 2rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+</style>
+
 </head>
 <body>
     <div class="flag-background">
@@ -124,54 +184,171 @@
                     <h2 class="text-3xl font-bold mb-12 text-center text-[#002868]">Featured Utility Trailers</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Product cards with alternating buttons -->
+                         <!-- 10' Trailers -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2">Standard 8' Utility Trailer</h3>
-                                <ul class="text-gray-600 mb-4 space-y-2">
-                                    <li>• 8' x 5' Mesh Bottom</li>
-                                    <li>• 3,500 lb Axle</li>
-                                    <li>• LED Lights</li>
-                                    <li>• 2" Coupler</li>
-                                </ul>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xl font-bold text-[#002868]">$1,995</span>
-                                    <a href="#" class="btn-blue px-4 py-2 rounded">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2">Heavy Duty 8' Utility Trailer</h3>
+                          <div class="p-6">
+                            <h2 class="text-2xl font-bold text-[#002868]">10' Utility Trailer SA/TA</h2>
+                            <div class="flex items-center mb-4">
+                                  <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                  <h3 class="text-xl font-bold"></h3>
+                              </div>
+                              <div class="mb-4">
+                                <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                Click for Description ▼
+                              </button>
+                              <div class="hidden mt-2 p-3 bg-gray-50 rounded">
                                 <ul class="text-gray-600 mb-4 space-y-2">
                                     <li>• 8' x 5' Reinforced Mesh</li>
                                     <li>• 5,200 lb Axle</li>
                                     <li>• LED Light Package</li>
                                     <li>• 2-5/16" Coupler</li>
                                 </ul>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xl font-bold text-[#002868]">$2,495</span>
-                                    <a href="#" class="btn-red px-4 py-2 rounded">View Details</a>
+                                Our Heavy Duty 10' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                                      high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                                      and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
+                                  </div>
+                              </div>
+                              <div class="flex justify-between items-center">
+                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                  <!-- <a href="#" class="btn-red px-4 py-2 rounded">View Details</a> -->
+                              </div>
+                          </div>
+                      </div>
+
+
+                        <!-- 14' trailer -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                          <div class="p-6">
+                            <h2 class="text-2xl font-bold text-[#002868]">12' Utility Trailer SA/TA</h2>
+                              <div class="flex items-center mb-4">
+                                  <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                  <h3 class="text-xl font-bold"></h3>
+                              </div>
+                              <div class="mb-4">
+                                <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                                onclick="this.nextElementSibling.classList.toggle('hidden')">
+                                Click for Description ▼
+                              </button>
+                              <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                                <ul class="text-gray-600 mb-4 space-y-2">
+                                    <li>• 8' x 5' Reinforced Mesh</li>
+                                    <li>• 5,200 lb Axle</li>
+                                    <li>• LED Light Package</li>
+                                    <li>• 2-5/16" Coupler</li>
+                                </ul>
+                                Our Heavy Duty 14' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                                      high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                                      and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
+                                  </div>
+                              </div>
+                              <div class="flex justify-between items-center">
+                                  <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                  <!-- <a href="#" class="btn-red px-4 py-2 rounded">View Details</a> -->
+                              </div>
+                          </div>
+                      </div>
+                      <!-- 16' trailer -->
+                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                        <div class="p-6">
+                          <h2 class="text-2xl font-bold text-[#002868]">14' Utility Trailer TA</h2>
+
+                            <div class="flex items-center mb-4">
+                                <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                <h3 class="text-xl font-bold"></h3>
+                            </div>
+                            <div class="mb-4">
+                              <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                              onclick="this.nextElementSibling.classList.toggle('hidden')">
+                              Click for Description ▼
+                            </button>
+                            <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                              <ul class="text-gray-600 mb-4 space-y-2">
+                                  <li>• 8' x 5' Reinforced Mesh</li>
+                                  <li>• 5,200 lb Axle</li>
+                                  <li>• LED Light Package</li>
+                                  <li>• 2-5/16" Coupler</li>
+                              </ul>
+                              Our Heavy Duty 16' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                                    high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                                    and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
                                 </div>
                             </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                <!-- <a href="#" class="btn-red px-4 py-2 rounded">View Details</a> -->
+                            </div>
                         </div>
-
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2">Professional 12' Utility Trailer</h3>
-                                <ul class="text-gray-600 mb-4 space-y-2">
-                                    <li>• 12' x 5' Heavy-Duty Mesh</li>
-                                    <li>• 7,000 lb Axle</li>
-                                    <li>• Premium LED Package</li>
-                                    <li>• Side Rails Included</li>
-                                </ul>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xl font-bold text-[#002868]">$2,995</span>
-                                    <a href="#" class="btn-blue px-4 py-2 rounded">View Details</a>
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                      <!-- Product cards with alternating buttons -->
+                       <!-- 16' Trailers -->
+                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                        <div class="p-6">
+                          <h2 class="text-2xl font-bold text-[#002868]">16' Utility Trailer TA</h2>
+                          <div class="flex items-center mb-4">
+                                <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                <h3 class="text-xl font-bold"></h3>
+                            </div>
+                            <div class="mb-4">
+                              <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                              onclick="this.nextElementSibling.classList.toggle('hidden')">
+                              Click for Description ▼
+                            </button>
+                            <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                              <ul class="text-gray-600 mb-4 space-y-2">
+                                  <li>• 8' x 5' Reinforced Mesh</li>
+                                  <li>• 5,200 lb Axle</li>
+                                  <li>• LED Light Package</li>
+                                  <li>• 2-5/16" Coupler</li>
+                              </ul>
+                              Our Heavy Duty 10' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                                    high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                                    and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
                                 </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                <!-- <a href="#" class="btn-red px-4 py-2 rounded">View Details</a> -->
                             </div>
                         </div>
                     </div>
+
+
+                      <!-- 20' trailer -->
+                      <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                        <div class="p-6">
+                          <h2 class="text-2xl font-bold text-[#002868]">20' Utility Trailer SA/TA</h2>
+                            <div class="flex items-center mb-4">
+                                <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                                <h3 class="text-xl font-bold"></h3>
+                            </div>
+                            <div class="mb-4">
+                              <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                              onclick="this.nextElementSibling.classList.toggle('hidden')">
+                              Click for Description ▼
+                            </button>
+                            <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                              <ul class="text-gray-600 mb-4 space-y-2">
+                                  <li>• 8' x 5' Reinforced Mesh</li>
+                                  <li>• 5,200 lb Axle</li>
+                                  <li>• LED Light Package</li>
+                                  <li>• 2-5/16" Coupler</li>
+                              </ul>
+                              Our Heavy Duty 14' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                                    high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                                    and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-[#002868]">$2,495</span>
+                                <!-- <a href="#" class="btn-red px-4 py-2 rounded">View Details</a> -->
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
                     <div class="text-center mt-12">
                         <a href="#inventory" class="btn-red px-8 py-3 rounded-lg text-lg inline-block">View All Trailers</a>
                     </div>
@@ -209,9 +386,71 @@
                     </div>
                 </div>
             </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 16' trailer -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-[#002868]">16' Utility Trailer SA/TA</h2>
+                    <div class="flex items-center mb-4">
+                        <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                        <h3 class="text-xl font-bold"></h3>
+                    </div>
+                    <div class="mb-4">
+                        <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                        onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Click for Description ▼
+                        </button>
+                        <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                            <ul class="text-gray-600 mb-4 space-y-2">
+                                <li>• 16' x 5' Reinforced Mesh</li>
+                                <li>• 7,000 lb Axle</li>
+                                <li>• LED Light Package</li>
+                                <li>• 2-5/16" Coupler</li>
+                            </ul>
+                            Our Heavy Duty 16' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                            high-capacity axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                            and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-[#002868]">$3,495</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 20' trailer -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#002868]">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-[#002868]">20' Utility Trailer SA/TA</h2>
+                    <div class="flex items-center mb-4">
+                        <img src="63458004.avif" alt="Utility Trailer" class="w-[50px] h-[50px] object-cover mr-4">
+                        <h3 class="text-xl font-bold"></h3>
+                    </div>
+                    <div class="mb-4">
+                        <button class="w-full text-left p-2 bg-gray-100 hover:bg-gray-200 rounded" 
+                        onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Click for Description ▼
+                        </button>
+                        <div class="hidden mt-2 p-3 bg-gray-50 rounded">
+                            <ul class="text-gray-600 mb-4 space-y-2">
+                                <li>• 20' x 5' Reinforced Mesh</li>
+                                <li>• 7,000 lb Tandem Axle</li>
+                                <li>• LED Light Package</li>
+                                <li>• 2-5/16" Coupler</li>
+                            </ul>
+                            Our Heavy Duty 20' Utility Trailer is perfect for commercial use. Built with reinforced mesh and a 
+                            high-capacity tandem axle, this trailer can handle your toughest jobs. Includes premium LED lighting package 
+                            and heavy-duty coupler for secure towing. Backed by our comprehensive warranty and made right here in Tennessee.
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-[#002868]">$4,495</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Contact Section -->
-<!-- Contact Section -->
+<!-- Trailers Section -->
 <div class="py-16 px-4" id="contact">
     <div class="max-w-6xl mx-auto">
         <div class="bg-navy p-8 rounded-t-lg shadow-lg border-t-4 border-x-4 border-[#bb0000]" style="background-color: #000080;">
@@ -286,7 +525,36 @@
                     </iframe>                
                 </div>
             </div>
-
+            <!-- end Trailers Section -->
         </div>
+      </div>    
     </div>
-</div>    
+  </div>
+</body>
+<script>
+  // Add this JavaScript to handle the accordion
+  document.addEventListener('DOMContentLoaded', function() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      
+      accordionHeaders.forEach(header => {
+          header.addEventListener('click', function() {
+              // Toggle active class on header
+              this.classList.toggle('active');
+              
+              // Toggle content
+              const content = this.nextElementSibling;
+              content.classList.toggle('active');
+              
+              // Close other open accordions (optional)
+              accordionHeaders.forEach(otherHeader => {
+                  if (otherHeader !== header) {
+                      otherHeader.classList.remove('active');
+                      otherHeader.nextElementSibling.classList.remove('active');
+                  }
+              });
+          });
+      });
+  });
+</script>
+
+</html>
